@@ -1,0 +1,22 @@
+2025-04-22 22:38:56,168 [INFO] WebApp:194 - Connection lost
+2025-04-22 22:38:58,260 [INFO] WebApp:191 - Connection restablished
+2025-04-22 22:40:46,232 [INFO] WebApp:194 - Connection lost
+2025-04-22 22:40:46,694 [INFO] WebApp:191 - Connection restablished
+2025-04-22 22:56:53,514 [INFO] WebApp:194 - Connection lost
+2025-04-22 22:56:53,785 [INFO] WebApp:191 - Connection restablished
+2025-04-22 22:56:59,165 [INFO] WebApp:194 - Connection lost
+2025-04-22 22:56:59,375 [INFO] WebApp:191 - Connection restablished
+2025-04-22 23:10:06,108 [INFO] WebApp:194 - Connection lost
+2025-04-22 23:10:06,339 [INFO] WebApp:191 - Connection restablished
+2025-04-22 23:28:32,933 [INFO] WebApp:194 - Connection lost
+2025-04-22 23:28:33,679 [INFO] WebApp:191 - Connection restablished
+2025-04-22 23:44:53,917 [INFO] WebApp:194 - Connection lost
+2025-04-22 23:44:54,157 [INFO] WebApp:191 - Connection restablished
+2025-04-22 23:52:00,871 [INFO] WebApp:194 - Connection lost
+2025-04-22 23:52:01,136 [INFO] WebApp:191 - Connection restablished
+2025-04-22 23:52:32,106 [INFO] MainUpdater:2872 - connection check result : 10
+2025-04-22 23:52:33,425 [INFO] McuFinderGlobals:76 - Set McuFinderConnectedMode to true
+2025-04-22 23:52:33,438 [INFO] MultiScanPanel:200 - Auto-refresh data requested => check proxy status ongoing
+2025-04-22 23:52:33,444 [INFO] FinderPluginLoader:95 - Searching for filters in installed packs
+2025-04-22 23:52:39,528 [INFO] LoadUrlFilesThread:185 - End of LoadServerUrlFiles without Thread
+2025-04-22 23:52:39,562 [INFO] DetailPanel:341 - Set advertising image to /Users/sanjaybendale/STM32Cube/Repository//en.prom-stm32u3-mcu-finder.jpg

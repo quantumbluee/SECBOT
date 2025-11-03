@@ -1,0 +1,9 @@
+../Core/Src/main.c:38:5:main	1
+../Core/Src/main.c:59:5:read_openmv_frame	5
+../Core/Src/main.c:74:6:send_combined_data	1
+../Core/Src/main.c:96:6:gps_init	1
+../Core/Src/main.c:101:6:gps_read_and_parse	2
+../Core/Src/main.c:116:6:icm20948_init	1
+../Core/Src/main.c:125:6:icm20948_read_accel	1
+../Core/Src/main.c:137:13:MX_USART2_UART_Init	2
+../Core/Src/main.c:155:13:MX_USART3_UART_Init	2

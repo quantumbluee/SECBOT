@@ -1,0 +1,33 @@
+# Syntax for OWNERS files can be found at
+# https://gerrit.googlesource.com/plugins/code-owners/+/HEAD/resources/Documentation/backend-find-owners.md
+#
+# OWNERS for all modules. Please see individual modules for their OWNERS files.
+#
+# Note: a Pigweed core team member should be among the OWNERS for each module.
+aarongreen@google.com
+abrachet@google.com
+alizhang@google.com
+amontanez@google.com
+amyhu@google.com
+asadmemon@google.com
+cachinchilla@google.com
+chadnorvell@google.com
+cramertj@google.com
+ewout@google.com
+frolv@google.com
+hayala@google.com
+hepler@google.com
+kayce@google.com
+keir@google.com
+konkers@google.com
+lesprit@google.com
+mcgrathr@google.com
+mohrr@google.com
+phosek@google.com
+prabhukr@google.com
+tonymd@google.com
+tpudlik@google.com
+zyecheng@google.com
+
+# Additional owners for updating bazel dependencies
+per-file WORKSPACE=file:WORKSPACE_OWNERS

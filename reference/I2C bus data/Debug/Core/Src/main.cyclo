@@ -1,0 +1,13 @@
+../Core/Src/main.c:123:5:main	2
+../Core/Src/main.c:166:6:SystemClock_Config	4
+../Core/Src/main.c:227:13:MX_ETH_Init	2
+../Core/Src/main.c:276:13:MX_HASH_Init	2
+../Core/Src/main.c:302:13:MX_I2C2_Init	4
+../Core/Src/main.c:350:13:MX_USART3_UART_Init	5
+../Core/Src/main.c:398:13:MX_USB_OTG_FS_PCD_Init	2
+../Core/Src/main.c:434:13:MX_GPIO_Init	1
+../Core/Src/main.c:498:6:gps_read_and_parse	3
+../Core/Src/main.c:517:6:icm20948_init	1
+../Core/Src/main.c:526:6:icm20948_read_accel	3
+../Core/Src/main.c:549:6:compute_sha256	3
+../Core/Src/main.c:578:6:Error_Handler	1

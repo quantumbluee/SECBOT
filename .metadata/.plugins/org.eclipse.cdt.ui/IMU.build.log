@@ -1,0 +1,20 @@
+00:02:43 **** Incremental Build of configuration Debug for project IMU ****
+make -j7 all 
+arm-none-eabi-gcc -o "IMU.elf" @"objects.list"   -mcpu=cortex-m7 -T"/Users/sanjaybendale/STM32CubeIDE/workspace_1.11.2/IMU/STM32H753ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="IMU.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.macos64_1.1.0.202410301201/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld: warning: IMU.elf has a LOAD segment with RWX permissions
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.macos64_1.1.0.202410301201/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld: ./Core/Src/main.o: in function `main':
+/Users/sanjaybendale/STM32CubeIDE/workspace_1.11.2/IMU/Debug/../Core/Src/main.c:40: undefined reference to `SystemClock_Config'
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.macos64_1.1.0.202410301201/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld: /Users/sanjaybendale/STM32CubeIDE/workspace_1.11.2/IMU/Debug/../Core/Src/main.c:41: undefined reference to `MX_GPIO_Init'
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.macos64_1.1.0.202410301201/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld: /Users/sanjaybendale/STM32CubeIDE/workspace_1.11.2/IMU/Debug/../Core/Src/main.c:42: undefined reference to `MX_I2C2_Init'
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.macos64_1.1.0.202410301201/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld: ./Core/Src/main.o: in function `MX_USART2_UART_Init':
+/Users/sanjaybendale/STM32CubeIDE/workspace_1.11.2/IMU/Debug/../Core/Src/main.c:150: undefined reference to `Error_Handler'
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.macos64_1.1.0.202410301201/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld: ./Core/Src/main.o: in function `MX_USART3_UART_Init':
+/Users/sanjaybendale/STM32CubeIDE/workspace_1.11.2/IMU/Debug/../Core/Src/main.c:168: undefined reference to `Error_Handler'
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.macos64_1.1.0.202410301201/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld: ./Core/Src/stm32h7xx_hal_msp.o: in function `HAL_UART_MspInit':
+/Users/sanjaybendale/STM32CubeIDE/workspace_1.11.2/IMU/Debug/../Core/Src/stm32h7xx_hal_msp.c:290: undefined reference to `Error_Handler'
+collect2: error: ld returned 1 exit status
+make: *** [makefile:64: IMU.elf] Error 1
+"make -j7 all" terminated with exit code 2. Build might be incomplete.
+
+00:02:45 Build Failed. 7 errors, 1 warnings. (took 1s.897ms)
+

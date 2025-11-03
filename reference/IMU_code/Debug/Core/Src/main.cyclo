@@ -1,0 +1,9 @@
+../Core/Src/main.c:78:7:read_gps_gnrmc	6
+../Core/Src/main.c:108:6:main	5
+../Core/Src/main.c:197:7:SystemClock_Config	4
+../Core/Src/main.c:248:14:MX_I2C2_Init	4
+../Core/Src/main.c:296:14:MX_USART1_UART_Init	5
+../Core/Src/main.c:344:14:MX_USART2_UART_Init	5
+../Core/Src/main.c:392:14:MX_USART6_UART_Init	5
+../Core/Src/main.c:440:14:MX_GPIO_Init	1
+../Core/Src/main.c:478:7:Error_Handler	1

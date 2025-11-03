@@ -1,0 +1,70 @@
+23:55:25 **** Incremental Build of configuration Debug for project SPI verify ****
+make -j7 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_PWR_LDO_SUPPLY -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32H753xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32H7xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:123:32: error: 'spi_tx_data' undeclared (first use in this function)
+  123 |       HAL_SPI_Transmit(&hspi3, spi_tx_data, strlen((char*)spi_tx_data), HAL_MAX_DELAY);
+      |                                ^~~~~~~~~~~
+../Core/Src/main.c:123:32: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:123:45: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  123 |       HAL_SPI_Transmit(&hspi3, spi_tx_data, strlen((char*)spi_tx_data), HAL_MAX_DELAY);
+      |                                             ^~~~~~
+../Core/Src/main.c:21:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   20 | #include "main.h"
+  +++ |+#include <string.h>
+   21 | 
+../Core/Src/main.c:123:45: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  123 |       HAL_SPI_Transmit(&hspi3, spi_tx_data, strlen((char*)spi_tx_data), HAL_MAX_DELAY);
+      |                                             ^~~~~~
+../Core/Src/main.c:123:45: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:193:13: error: invalid storage class for function 'MX_SPI3_Init'
+  193 | static void MX_SPI3_Init(void)
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:241:13: error: invalid storage class for function 'MX_GPIO_Init'
+  241 | static void MX_GPIO_Init(void)
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c: In function 'print_uart':
+../Core/Src/main.c:280:5: warning: implicit declaration of function 'va_start' [-Wimplicit-function-declaration]
+  280 |     va_start(args, format);
+      |     ^~~~~~~~
+../Core/Src/main.c:282:5: warning: implicit declaration of function 'va_end' [-Wimplicit-function-declaration]
+  282 |     va_end(args);
+      |     ^~~~~~
+../Core/Src/main.c:284:24: error: 'huart3' undeclared (first use in this function)
+  284 |     HAL_UART_Transmit(&huart3, (uint8_t *)uart_buffer, strlen(uart_buffer), HAL_MAX_DELAY);
+      |                        ^~~~~~
+../Core/Src/main.c:284:56: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  284 |     HAL_UART_Transmit(&huart3, (uint8_t *)uart_buffer, strlen(uart_buffer), HAL_MAX_DELAY);
+      |                                                        ^~~~~~
+../Core/Src/main.c:284:56: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:301:1: error: expected declaration or statement at end of input
+  301 | }
+      | ^
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:54:13: warning: 'MX_GPIO_Init' used but never defined
+   54 | static void MX_GPIO_Init(void);
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:55:13: warning: 'MX_SPI3_Init' used but never defined
+   55 | static void MX_SPI3_Init(void);
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:292:6: warning: 'Error_Handler' defined but not used [-Wunused-function]
+  292 | void Error_Handler(void)
+      |      ^~~~~~~~~~~~~
+../Core/Src/main.c:276:6: warning: 'print_uart' defined but not used [-Wunused-function]
+  276 | void print_uart(const char *format, ...)
+      |      ^~~~~~~~~~
+../Core/Src/main.c:241:13: warning: 'MX_GPIO_Init' defined but not used [-Wunused-function]
+  241 | static void MX_GPIO_Init(void)
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:193:13: warning: 'MX_SPI3_Init' defined but not used [-Wunused-function]
+  193 | static void MX_SPI3_Init(void)
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:133:6: warning: 'SystemClock_Config' defined but not used [-Wunused-function]
+  133 | void SystemClock_Config(void)
+      |      ^~~~~~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j7 all" terminated with exit code 2. Build might be incomplete.
+
+23:55:26 Build Failed. 6 errors, 12 warnings. (took 1s.162ms)
+

@@ -1,0 +1,167 @@
+#include "main.h"
+#include "string.h"
+
+// Motor control pins
+#define MOTOR1_EN_PIN    GPIO_PIN_2  // ENA for Motor 1 (GPIO Pin PF2)
+#define MOTOR2_EN_PIN    GPIO_PIN_3  // ENB for Motor 2 (GPIO Pin PF3)
+#define MOTOR1_DIR_PIN   GPIO_PIN_11 // IN2 for Motor 1 (GPIO Pin PE11)
+#define MOTOR2_DIR_PIN   GPIO_PIN_3  // IN4 for Motor 2 (GPIO Pin PA3)
+
+// PWM Duty Cycle Variables
+uint16_t motor1_duty_cycle = 50; // 50% duty cycle
+uint16_t motor2_duty_cycle = 75; // 75% duty cycle
+
+UART_HandleTypeDef huart3;
+TIM_HandleTypeDef htim1;
+TIM_HandleTypeDef htim2;
+
+// Function prototypes
+void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+static void MX_USART3_UART_Init(void);
+static void MX_TIM1_Init(void);
+static void MX_TIM2_Init(void);
+
+// Debugging helper
+void Debug_Print(const char *message)
+{
+    HAL_UART_Transmit(&huart3, (uint8_t *)message, strlen(message), HAL_MAX_DELAY);
+}
+
+int main(void)
+{
+    // Initialize the system
+    HAL_Init();
+    SystemClock_Config();
+    MX_GPIO_Init();
+    MX_USART3_UART_Init();
+    MX_TIM1_Init();
+    MX_TIM2_Init();
+
+    Debug_Print("System initialized.\n");
+
+    // Enable motors
+    HAL_GPIO_WritePin(GPIOF, MOTOR1_EN_PIN, GPIO_PIN_SET); // Enable Motor 1
+    Debug_Print("Motor 1 enabled (ENA high).\n");
+    HAL_GPIO_WritePin(GPIOF, MOTOR2_EN_PIN, GPIO_PIN_SET); // Enable Motor 2
+    Debug_Print("Motor 2 enabled (ENB high).\n");
+
+    // Set directions
+    HAL_GPIO_WritePin(GPIOE, MOTOR1_DIR_PIN, GPIO_PIN_SET); // Motor 1 forward
+    Debug_Print("Motor 1 set to forward direction (IN2 high).\n");
+    HAL_GPIO_WritePin(GPIOA, MOTOR2_DIR_PIN, GPIO_PIN_RESET); // Motor 2 reverse
+    Debug_Print("Motor 2 set to reverse direction (IN4 low).\n");
+
+    // Start PWM
+    if (HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1) == HAL_OK)
+        Debug_Print("PWM started for Motor 1.\n");
+    else
+        Debug_Print("Error: PWM not started for Motor 1.\n");
+
+    if (HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1) == HAL_OK)
+        Debug_Print("PWM started for Motor 2.\n");
+    else
+        Debug_Print("Error: PWM not started for Motor 2.\n");
+
+    // Set initial PWM duty cycles
+    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, (htim1.Init.Period * motor1_duty_cycle) / 100);
+    Debug_Print("Motor 1 PWM duty cycle set.\n");
+
+    __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, (htim2.Init.Period * motor2_duty_cycle) / 100);
+    Debug_Print("Motor 2 PWM duty cycle set.\n");
+
+    while (1)
+    {
+        // Debugging loop
+        HAL_Delay(2000);
+        Debug_Print("Toggling motor directions.\n");
+
+        HAL_GPIO_TogglePin(GPIOE, MOTOR1_DIR_PIN); // Toggle Motor 1 direction
+        Debug_Print("Motor 1 direction toggled.\n");
+
+        HAL_GPIO_TogglePin(GPIOA, MOTOR2_DIR_PIN); // Toggle Motor 2 direction
+        Debug_Print("Motor 2 direction toggled.\n");
+
+        // Update PWM duty cycles
+        motor1_duty_cycle = (motor1_duty_cycle + 10) % 100;
+        motor2_duty_cycle = (motor2_duty_cycle + 20) % 100;
+
+        __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, (htim1.Init.Period * motor1_duty_cycle) / 100);
+        Debug_Print("Updated Motor 1 PWM duty cycle.\n");
+
+        __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, (htim2.Init.Period * motor2_duty_cycle) / 100);
+        Debug_Print("Updated Motor 2 PWM duty cycle.\n");
+    }
+}
+
+static void MX_USART3_UART_Init(void)
+{
+    huart3.Instance = USART3;
+    huart3.Init.BaudRate = 115200;
+    huart3.Init.WordLength = UART_WORDLENGTH_8B;
+    huart3.Init.StopBits = UART_STOPBITS_1;
+    huart3.Init.Parity = UART_PARITY_NONE;
+    huart3.Init.Mode = UART_MODE_TX_RX;
+    huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+    huart3.Init.OverSampling = UART_OVERSAMPLING_16;
+
+    if (HAL_UART_Init(&huart3) != HAL_OK)
+    {
+        Error_Handler();
+    }
+    Debug_Print("UART initialized for debugging.\n");
+}
+
+static void MX_TIM1_Init(void)
+{
+    htim1.Instance = TIM1;
+    htim1.Init.Prescaler = 80 - 1; // 80 MHz / 80 = 1 MHz
+    htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
+    htim1.Init.Period = 1000 - 1; // 1 kHz PWM frequency
+    htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+
+    if (HAL_TIM_PWM_Init(&htim1) != HAL_OK)
+    {
+        Debug_Print("Error: TIM1 initialization failed.\n");
+        Error_Handler();
+    }
+
+    TIM_OC_InitTypeDef sConfigOC = {0};
+    sConfigOC.OCMode = TIM_OCMODE_PWM1;
+    sConfigOC.Pulse = 0;
+    sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+
+    if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
+    {
+        Debug_Print("Error: TIM1 PWM channel configuration failed.\n");
+        Error_Handler();
+    }
+    Debug_Print("TIM1 initialized for PWM.\n");
+}
+
+static void MX_TIM2_Init(void)
+{
+    htim2.Instance = TIM2;
+    htim2.Init.Prescaler = 80 - 1; // 80 MHz / 80 = 1 MHz
+    htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
+    htim2.Init.Period = 1000 - 1; // 1 kHz PWM frequency
+    htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+
+    if (HAL_TIM_PWM_Init(&htim2) != HAL_OK)
+    {
+        Debug_Print("Error: TIM2 initialization failed.\n");
+        Error_Handler();
+    }
+
+    TIM_OC_InitTypeDef sConfigOC = {0};
+    sConfigOC.OCMode = TIM_OCMODE_PWM1;
+    sConfigOC.Pulse = 0;
+    sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+
+    if (HAL_TIM_PWM_ConfigChannel(&htim2, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
+    {
+        Debug_Print("Error: TIM2 PWM channel configuration failed.\n");
+        Error_Handler();
+    }
+    Debug_Print("TIM2 initialized for PWM.\n");
+}

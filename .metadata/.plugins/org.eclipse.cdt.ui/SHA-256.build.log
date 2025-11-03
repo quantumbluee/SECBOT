@@ -1,0 +1,10 @@
+03:47:09 **** Incremental Build of configuration Debug for project SHA-256 ****
+make -j7 all 
+arm-none-eabi-size   SHA-256.elf 
+   text	   data	    bss	    dec	    hex	filename
+  44444	    316	  12596	  57356	   e00c	SHA-256.elf
+Finished building: default.size.stdout
+ 
+
+03:47:09 Build Finished. 0 errors, 0 warnings. (took 348ms)
+

@@ -1,0 +1,7 @@
+../NRF905-STM32/NRF905_hw.c:14:5:NRF905_hw_gpio_get	16	static
+../NRF905-STM32/NRF905_hw.c:31:5:NRF905_hw_gpio_set	16	static
+../NRF905-STM32/NRF905_hw.c:48:6:NRF905_hw_delay_ms	16	static
+../NRF905-STM32/NRF905_hw.c:52:6:NRF905_hw_delay_us	24	static
+../NRF905-STM32/NRF905_hw.c:73:6:NRF905_hw_enable_timer	16	static
+../NRF905-STM32/NRF905_hw.c:80:5:NRF905_hw_spi_transfer	40	static
+../NRF905-STM32/NRF905_hw.c:99:6:NRF905_hw_spi_receive_it	24	static

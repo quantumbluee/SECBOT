@@ -1,0 +1,186 @@
+{
+  "packages": [
+    {
+      "path": "gn/gn/${platform}",
+      "platforms": [
+        "linux-amd64",
+        "linux-arm64",
+        "mac-amd64",
+        "mac-arm64",
+        "windows-amd64"
+      ],
+      "tags": [
+        "git_revision:df98b86690c83b81aedc909ded18857296406159"
+      ],
+      "version_file": ".versions/gn.cipd_version"
+    },
+    {
+      "path": "fuchsia/third_party/ninja/${platform}",
+      "platforms": [
+        "linux-amd64",
+        "linux-arm64",
+        "mac-amd64",
+        "mac-arm64",
+        "windows-amd64"
+      ],
+      "tags": [
+        "git_revision:7fdd96a48def7f0d7909d045ce8afffb4d04ebbc"
+      ]
+    },
+    {
+      "path": "fuchsia/third_party/bloaty/${platform}",
+      "platforms": [
+        "linux-amd64",
+        "mac-amd64"
+      ],
+      "tags": [
+        "git_revision:c057ba4f43db0506d4ba8c096925b054b02a8bd3"
+      ],
+      "version_file": ".versions/bloaty.cipd_version"
+    },
+    {
+      "path": "fuchsia/third_party/bloaty/mac-amd64",
+      "platforms": [
+        "mac-arm64"
+      ],
+      "tags": [
+        "git_revision:c057ba4f43db0506d4ba8c096925b054b02a8bd3"
+      ],
+      "version_file": ".versions/bloaty.cipd_version"
+    },
+    {
+      "path": "infra/3pp/tools/protoc/${platform}",
+      "platforms": [
+        "linux-amd64",
+        "linux-arm64",
+        "mac-amd64",
+        "mac-arm64",
+        "windows-amd64"
+      ],
+      "tags": [
+        "version:2@24.4"
+      ]
+    },
+    {
+      "path": "fuchsia/third_party/clang/${platform}",
+      "platforms": [
+        "linux-amd64",
+        "linux-arm64",
+        "mac-amd64",
+        "mac-arm64",
+        "windows-amd64"
+      ],
+      "tags": [
+        "git_revision:145176dc0c93566ce4aef721044d49ab8ba50f87"
+      ],
+      "version_file": ".versions/clang.cipd_version"
+    },
+    {
+      "path": "fuchsia/third_party/rust/host/${platform}",
+      "platforms": [
+        "linux-amd64",
+        "linux-arm64",
+        "mac-amd64",
+        "mac-arm64"
+      ],
+      "subdir": "rust",
+      "tags": [
+        "git_revision:bf9c7a64ad222b85397573668b39e6d1ab9f4a72"
+      ]
+    },
+    {
+      "path": "fuchsia/third_party/rust/target/aarch64-unknown-linux-gnu",
+      "platforms": [
+        "linux-arm64"
+      ],
+      "subdir": "rust",
+      "tags": [
+        "git_revision:bf9c7a64ad222b85397573668b39e6d1ab9f4a72"
+      ]
+    },
+    {
+      "path": "fuchsia/third_party/rust/target/x86_64-unknown-linux-gnu",
+      "platforms": [
+        "linux-amd64"
+      ],
+      "subdir": "rust",
+      "tags": [
+        "git_revision:bf9c7a64ad222b85397573668b39e6d1ab9f4a72"
+      ]
+    },
+    {
+      "path": "fuchsia/third_party/rust/target/aarch64-apple-darwin",
+      "platforms": [
+        "mac-arm64"
+      ],
+      "subdir": "rust",
+      "tags": [
+        "git_revision:bf9c7a64ad222b85397573668b39e6d1ab9f4a72"
+      ]
+    },
+    {
+      "path": "fuchsia/third_party/rust/target/x86_64-apple-darwin",
+      "platforms": [
+        "mac-amd64"
+      ],
+      "subdir": "rust",
+      "tags": [
+        "git_revision:bf9c7a64ad222b85397573668b39e6d1ab9f4a72"
+      ]
+    },
+    {
+      "path": "infra/3pp/tools/openocd/${platform}",
+      "platforms": [
+        "linux-amd64",
+        "linux-arm64",
+        "mac-amd64",
+        "mac-arm64"
+      ],
+      "tags": [
+        "version:2@0.12.0-2"
+      ]
+    },
+    {
+      "path": "pigweed/third_party/mingw64-x86_64-win32-seh/${platform}",
+      "platforms": [
+        "windows-amd64"
+      ],
+      "tags": [
+        "version:10.2.0-11"
+      ]
+    },
+    {
+      "path": "fuchsia/third_party/qemu/${platform}",
+      "platforms": [
+        "linux-amd64",
+        "linux-arm64",
+        "mac-amd64",
+        "mac-arm64"
+      ],
+      "tags": [
+        "git_revision:1600b9f46b1bd08b00fe86c46ef6dbb48cbe10d6"
+      ],
+      "version_file": ".versions/qemu.cipd_version"
+    },
+    {
+      "path": "fuchsia/third_party/sysroot/bionic",
+      "platforms": [
+        "linux-amd64",
+        "linux-arm64"
+      ],
+      "subdir": "clang_sysroot",
+      "tags": [
+        "git_revision:702eb9654703a7cec1cadf93a7e3aa269d053943"
+      ]
+    },
+    {
+      "path": "infra/3pp/tools/renode/${platform}",
+      "platforms": [
+        "linux-amd64"
+      ],
+      "tags": [
+        "version:2@1.14.0+20240213git9ffe8a98a"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+12:09:13 **** Incremental Build of configuration Debug for project motorcontrol ****
+make -j7 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_PWR_LDO_SUPPLY -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32H753xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32H7xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:89:5: warning: implicit declaration of function 'start_motor' [-Wimplicit-function-declaration]
+   89 |     start_motor();
+      |     ^~~~~~~~~~~
+../Core/Src/main.c:96:13: warning: implicit declaration of function 'stop_motor' [-Wimplicit-function-declaration]
+   96 |             stop_motor();
+      |             ^~~~~~~~~~
+../Core/Src/main.c:87:23: warning: unused variable 'status' [-Wunused-variable]
+   87 |     HAL_StatusTypeDef status = HAL_UART_Transmit(&huart1, (uint8_t *)data, sizeof(data), 1000);
+      |                       ^~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:316:6: warning: conflicting types for 'stop_motor'; have 'void()'
+  316 | void stop_motor()
+      |      ^~~~~~~~~~
+../Core/Src/main.c:96:13: note: previous implicit declaration of 'stop_motor' with type 'void()'
+   96 |             stop_motor();
+      |             ^~~~~~~~~~
+../Core/Src/main.c:323:6: warning: conflicting types for 'start_motor'; have 'void()'
+  323 | void start_motor()
+      |      ^~~~~~~~~~~
+../Core/Src/main.c:89:5: note: previous implicit declaration of 'start_motor' with type 'void()'
+   89 |     start_motor();
+      |     ^~~~~~~~~~~
+arm-none-eabi-gcc -o "motorcontrol.elf" @"objects.list"   -mcpu=cortex-m7 -T"/Users/sanjaybendale/STM32CubeIDE/workspace_1.11.2/motorcontrol/STM32H753ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="motorcontrol.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: motorcontrol.elf
+ 
+arm-none-eabi-size  motorcontrol.elf 
+arm-none-eabi-objdump -h -S motorcontrol.elf  > "motorcontrol.list"
+   text	   data	    bss	    dec	    hex	filename
+  26164	     32	   1808	  28004	   6d64	motorcontrol.elf
+Finished building: default.size.stdout
+ 
+Finished building: motorcontrol.list
+ 
+
+12:09:19 Build Finished. 0 errors, 5 warnings. (took 5s.798ms)
+
